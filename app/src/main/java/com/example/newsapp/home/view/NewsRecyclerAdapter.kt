@@ -34,12 +34,14 @@ class NewsRecyclerAdapter(
         val article = articlesList[position]
         holder.binding.titleTv.text = article.title
         if (!article.author.isNullOrEmpty()) {
-            holder.binding.textView2.text = "By: " + article.author
+            holder.binding.sourceText.text = "By: " + article.author
             Log.i("NewsRecyclerAdapter", "author " + article.author)
         } else {
-            holder.binding.textView2.text = "By: " + article.source.name
+            holder.binding.sourceText.text = "By: " + article.source.name
             Log.i("NewsRecyclerAdapter", "sourse " + article.source.name)
         }
+        holder.binding.dateText.text = article.publishedAt
+        holder.binding.descText.text = article.description
         Glide.with(context).load(article.urlToImage).placeholder(R.drawable.photo)
             .into(holder.binding.roundedImageView)
         holder.binding.newsCardView.setOnClickListener { clickListener.onClick(article) }
