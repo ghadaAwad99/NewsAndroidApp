@@ -3,6 +3,7 @@ package com.example.newsapp.home.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.example.newsapp.R
@@ -29,12 +30,25 @@ class HomeActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+
+        fun replaceFragment(fragment:Fragment){
+            var fragmentManager = supportFragmentManager
+            var fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.frameLayout, fragment)
+            fragmentTransaction.commit()
+        }
+
+
+
+
        // val navHostFragment =
             //supportFragmentManager.findFragmentById(R.id.news_nav_host_fragment) as NavHostFragment
         //val navController = navHostFragment.navController
        //navController.graph = navController.navInflater.inflate(R.navigation.news_nav_graph)
 
     }
+
+
 
 
 }

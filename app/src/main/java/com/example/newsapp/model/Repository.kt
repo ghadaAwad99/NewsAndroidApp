@@ -17,6 +17,6 @@ class Repository private constructor(
         }
     }
 
-    override suspend fun getNewsFromApi(category:String) = remoteSource.getNewsResponse(category = category)
+    override suspend fun getNewsFromApi(category:String, q: String) = remoteSource.getNewsResponse(category = category, searchKeyWord= q)
 
 }

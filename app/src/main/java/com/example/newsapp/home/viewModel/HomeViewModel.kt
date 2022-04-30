@@ -17,12 +17,12 @@ class HomeViewModel(val repository: RepositoryInterface) : ViewModel() {
     private val newsMutableLiveData: MutableLiveData<ModelClass> = MutableLiveData()
     val newsLiveData: LiveData<ModelClass> = newsMutableLiveData
 
-    fun getNews(category:String) {
+    fun getNews(category:String, q :String ="") {
         Log.i("TAG", "inside getCurrTemp")
         viewModelScope.launch(Dispatchers.IO) {
             Log.i("TAG", "inside CoroutineScope")
             try {
-                val response = repository.getNewsFromApi(category)
+                val response = repository.getNewsFromApi(category, q = q)
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
                         newsMutableLiveData.postValue(response.body())

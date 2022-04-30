@@ -1,6 +1,7 @@
 package com.example.newsapp.home.view
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ import com.example.newsapp.model.Article
 
 class NewsRecyclerAdapter(
     private val context: Context,
-    //private val clickListener: OnClickListener
+    private val clickListener: OnClickListener
 ) : RecyclerView.Adapter<NewsViewHolder>() {
 
     private var articlesList = mutableListOf<Article>()
@@ -41,7 +42,13 @@ class NewsRecyclerAdapter(
         }
         Glide.with(context).load(article.urlToImage).placeholder(R.drawable.photo)
             .into(holder.binding.roundedImageView)
-        //holder.binding.daysCardView.setOnClickListener { clickListener.onClick(article) }
+        holder.binding.newsCardView.setOnClickListener { clickListener.onClick(article) }
+        holder.binding.shareButton.setOnClickListener {
+            var intent = Intent(Intent.ACTION_SEND)
+            intent.putExtra(Intent.EXTRA_TEXT, "Did You Hear The News! ${article.url}")
+            intent.type = "text/plain"
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = articlesList.size
