@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.newsapp.databinding.FragmentScienceBinding
+import com.example.newsapp.databinding.FragmentEntertainmentBinding
 import com.example.newsapp.home.viewModel.HomeViewModel
 import com.example.newsapp.home.viewModel.HomeViewModelFactory
 import com.example.newsapp.model.Article
@@ -19,9 +19,9 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class ScienceFragment : Fragment(), OnClickListener {
+class EntertainmentFragment : Fragment(), OnClickListener {
 
-    private val binding by lazy { FragmentScienceBinding.inflate(layoutInflater) }
+    private val binding by lazy { FragmentEntertainmentBinding.inflate(layoutInflater) }
 
     var query: String = ""
 
@@ -44,15 +44,15 @@ class ScienceFragment : Fragment(), OnClickListener {
 
         var job: Job? = null
 
-        viewModel.getNews("science")
+        viewModel.getNews("entertainment")
 
         binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 binding.searchBar.clearFocus()
                 if (!p0.isNullOrEmpty()) {
-                    viewModel.getNews("science", q = p0)
+                    viewModel.getNews("entertainment", q = p0)
                 } else {
-                    viewModel.getNews("science")
+                    viewModel.getNews("entertainment")
                 }
                 return false
             }
@@ -66,7 +66,7 @@ class ScienceFragment : Fragment(), OnClickListener {
                     } else {
                         query = ""
                     }
-                    viewModel.getNews("science", query)
+                    viewModel.getNews("entertainment", query)
                 }
                 return false
             }
@@ -85,4 +85,5 @@ class ScienceFragment : Fragment(), OnClickListener {
         intent.putExtra("article", article)
         startActivity(intent)
     }
+
 }

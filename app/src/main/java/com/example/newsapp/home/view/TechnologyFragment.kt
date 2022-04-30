@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.newsapp.databinding.FragmentScienceBinding
+import com.example.newsapp.databinding.FragmentGeneralBinding
+import com.example.newsapp.databinding.FragmentTechnologyBinding
 import com.example.newsapp.home.viewModel.HomeViewModel
 import com.example.newsapp.home.viewModel.HomeViewModelFactory
 import com.example.newsapp.model.Article
@@ -19,9 +20,9 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class ScienceFragment : Fragment(), OnClickListener {
+class TechnologyFragment : Fragment(), OnClickListener {
 
-    private val binding by lazy { FragmentScienceBinding.inflate(layoutInflater) }
+    private val binding by lazy { FragmentTechnologyBinding.inflate(layoutInflater) }
 
     var query: String = ""
 
@@ -44,15 +45,15 @@ class ScienceFragment : Fragment(), OnClickListener {
 
         var job: Job? = null
 
-        viewModel.getNews("science")
+        viewModel.getNews("technology")
 
         binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 binding.searchBar.clearFocus()
                 if (!p0.isNullOrEmpty()) {
-                    viewModel.getNews("science", q = p0)
+                    viewModel.getNews("technology", q = p0)
                 } else {
-                    viewModel.getNews("science")
+                    viewModel.getNews("technology")
                 }
                 return false
             }
@@ -66,7 +67,7 @@ class ScienceFragment : Fragment(), OnClickListener {
                     } else {
                         query = ""
                     }
-                    viewModel.getNews("science", query)
+                    viewModel.getNews("technology", query)
                 }
                 return false
             }

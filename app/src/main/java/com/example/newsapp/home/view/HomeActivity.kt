@@ -1,18 +1,12 @@
 package com.example.newsapp.home.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.NavHostFragment
+import androidx.appcompat.app.AppCompatActivity
 import com.example.newsapp.R
 import com.example.newsapp.databinding.ActivityHomeBinding
-import com.example.newsapp.home.viewModel.HomeViewModel
-import com.example.newsapp.home.viewModel.HomeViewModelFactory
-import com.example.newsapp.model.Article
-import com.example.newsapp.model.Repository
-import com.example.newsapp.network.NewsService
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
+
 
 class HomeActivity : AppCompatActivity(){
 
@@ -20,25 +14,41 @@ class HomeActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        binding.tabLayout.setupWithViewPager(binding.viewPager)
-        var viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
-        viewPagerAdapter.addFragment(GeneralFragment(),"General")
-        viewPagerAdapter.addFragment(BusinessFragment(),"Business")
-        viewPagerAdapter.addFragment(ScienceFragment(),"Sports")
-        binding.viewPager.adapter = viewPagerAdapter
+        //binding.tabLayout.setupWithViewPager(binding.viewPager)
+
+
+       // tabLayout.addTab(tabLayout.newTab().setText("Chats").setIcon(R.drawable.ic_chat_24))
+        //tabLayout.addTab(tabLayout.newTab().setText("Calls").setIcon(R.drawable.ic_call_24))
+
+
+
+
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("General").setIcon(R.drawable.ic_baseline_public_24))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Sports").setIcon(R.drawable.ic_sport))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Business").setIcon(R.drawable.ic_baseline_business_center_24))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("entertainment").setIcon(R.drawable.ic_entertainment))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("health").setIcon(R.drawable.ic_health))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("science").setIcon(R.drawable.ic_baseline_science_24))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("technology").setIcon(R.drawable.ic_technology))
 
-        fun replaceFragment(fragment:Fragment){
-            var fragmentManager = supportFragmentManager
-            var fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.frameLayout, fragment)
-            fragmentTransaction.commit()
-        }
+        var viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
+        viewPagerAdapter.addFragment(GeneralFragment())
+        viewPagerAdapter.addFragment(SportsFragment())
+        viewPagerAdapter.addFragment(BusinessFragment())
+        viewPagerAdapter.addFragment(EntertainmentFragment())
+        viewPagerAdapter.addFragment(HealthFragment())
+        viewPagerAdapter.addFragment(ScienceFragment())
+        viewPagerAdapter.addFragment(TechnologyFragment())
 
 
+        binding.viewPager.adapter = viewPagerAdapter
+
+        binding.viewPager.addOnPageChangeListener(TabLayoutOnPageChangeListener(binding.tabLayout))
+        binding.tabLayout.setOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(binding.viewPager))
 
 
        // val navHostFragment =

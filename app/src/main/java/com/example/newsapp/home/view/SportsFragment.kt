@@ -2,13 +2,14 @@ package com.example.newsapp.home.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.newsapp.databinding.FragmentScienceBinding
+import com.example.newsapp.databinding.FragmentSportsBinding
 import com.example.newsapp.home.viewModel.HomeViewModel
 import com.example.newsapp.home.viewModel.HomeViewModelFactory
 import com.example.newsapp.model.Article
@@ -19,20 +20,19 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class ScienceFragment : Fragment(), OnClickListener {
 
-    private val binding by lazy { FragmentScienceBinding.inflate(layoutInflater) }
+class SportsFragment : Fragment(), OnClickListener {
 
-    var query: String = ""
+    var query:String = ""
 
-    private val viewModel by lazy {
-        ViewModelProvider(
-            this, factory = HomeViewModelFactory(
-                Repository.getInstance(NewsService.getInstance(), requireContext())
-            )
+    private val binding by lazy { FragmentSportsBinding.inflate(layoutInflater) }
+
+    private val viewModel by lazy { ViewModelProvider(
+        this, factory = HomeViewModelFactory(
+            Repository.getInstance(NewsService.getInstance(), requireContext())
         )
-            .get(HomeViewModel::class.java)
-    }
+    )
+        .get(HomeViewModel::class.java) }
     private val newsAdapter by lazy { NewsRecyclerAdapter(requireContext(), this) }
 
 
@@ -42,17 +42,18 @@ class ScienceFragment : Fragment(), OnClickListener {
     ): View? {
         binding.newsRecyclerView.adapter = newsAdapter
 
-        var job: Job? = null
+        var job :  Job? = null
 
-        viewModel.getNews("science")
+        viewModel.getNews("sports")
 
         binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 binding.searchBar.clearFocus()
                 if (!p0.isNullOrEmpty()) {
-                    viewModel.getNews("science", q = p0)
+                    viewModel.getNews("sports", q = p0)
+                    Log.i("onQueryTextSubmit", p0)
                 } else {
-                    viewModel.getNews("science")
+                    viewModel.getNews("sports")
                 }
                 return false
             }
@@ -63,16 +64,16 @@ class ScienceFragment : Fragment(), OnClickListener {
                     delay(700L)
                     if (!p0.isNullOrEmpty()) {
                         query = p0
+                        Log.i("onQueryTextSubmit", p0)
                     } else {
                         query = ""
                     }
-                    viewModel.getNews("science", query)
+                    viewModel.getNews("sports", query)
                 }
                 return false
             }
 
         })
-
 
         viewModel.newsLiveData.observe(viewLifecycleOwner) {
             newsAdapter.setArticlesList(it.articles)
@@ -80,9 +81,12 @@ class ScienceFragment : Fragment(), OnClickListener {
         return binding.root
     }
 
+
     override fun onClick(article: Article) {
         var intent = Intent(requireContext(), ArticleActivity::class.java)
         intent.putExtra("article", article)
         startActivity(intent)
     }
+
+
 }

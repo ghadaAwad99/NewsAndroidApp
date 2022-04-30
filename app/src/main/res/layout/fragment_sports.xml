@@ -4,7 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".home.view.BusinessFragment">
+    tools:context=".home.view.SportsFragment"
+
+    >
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -36,9 +39,8 @@
             tools:layout_editor_absoluteX="10dp"
             tools:listitem="@layout/news_item"
             app:layout_constraintTop_toBottomOf="@id/search_bar"
+
             />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </FrameLayout>
