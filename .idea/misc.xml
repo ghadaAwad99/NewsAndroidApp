@@ -7,17 +7,21 @@
         <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/activity_article.xml" value="0.13072916666666667" />
         <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
+        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/activity_settings.xml" value="0.1875" />
         <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/content_article.xml" value="0.13072916666666667" />
         <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_article.xml" value="0.25416666666666665" />
-        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_business.xml" value="0.25416666666666665" />
-        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_entertainment.xml" value="0.17916666666666667" />
-        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_general.xml" value="0.15548780487804878" />
-        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_health.xml" value="0.17916666666666667" />
-        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_science.xml" value="0.25416666666666665" />
-        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_sports.xml" value="0.17916666666666667" />
-        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_technology.xml" value="0.17916666666666667" />
+        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_business.xml" value="0.1" />
+        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_entertainment.xml" value="0.12435233160621761" />
+        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_general.xml" value="0.2" />
+        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_health.xml" value="0.12435233160621761" />
+        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_science.xml" value="0.1" />
+        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_settings.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_sports.xml" value="0.12435233160621761" />
+        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/fragment_technology.xml" value="0.12435233160621761" />
         <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/layout/news_item.xml" value="0.4" />
+        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/xml/network_security_config.xml" value="0.18020833333333333" />
+        <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/xml/settings.xml" value="0.25416666666666665" />
         <entry key="..\:/Ghada/ITI/Kotlin/NewsApp/app/src/main/res/xml/xml.xml" value="0.18020833333333333" />
       </map>
     </option>

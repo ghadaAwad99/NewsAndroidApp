@@ -1,14 +1,19 @@
 package com.example.newsapp.home.view
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import com.example.newsapp.databinding.FragmentGeneralBinding
 import com.example.newsapp.home.viewModel.HomeViewModel
 import com.example.newsapp.home.viewModel.HomeViewModelFactory
@@ -25,7 +30,9 @@ class GeneralFragment : Fragment(), OnClickListener {
 
     private val binding by lazy { FragmentGeneralBinding.inflate(layoutInflater) }
 
-    var query:String = ""
+    private val CATEGORY = "general"
+
+    var query: String = ""
 
     private val viewModel by lazy {
         ViewModelProvider(
@@ -37,58 +44,58 @@ class GeneralFragment : Fragment(), OnClickListener {
     }
     private val newsAdapter by lazy { NewsRecyclerAdapter(requireContext(), this) }
 
+    override fun onResume() {
+        super.onResume()
+        fetchNews(query)
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding.newsRecyclerView.adapter = newsAdapter
 
-        var job :  Job? = null
+        binding.refreshLayout.setOnRefreshListener {
+            fetchNews(query)
+        }
 
-        viewModel.getNews("general")
+        if (isOnline(requireContext())) {
+            binding.offlineImage.visibility = View.GONE
+            var job: Job? = null
+            fetchNews(query)
 
-        binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(p0: String?): Boolean {
-                binding.searchBar.clearFocus()
-                if (!p0.isNullOrEmpty()) {
-                    viewModel.getNews("general", q = p0)
-                    Log.i("onQueryTextSubmit", p0)
-                } else {
-                    viewModel.getNews("general")
-                }
-                return false
-            }
-
-            override fun onQueryTextChange(p0: String?): Boolean {
-                job?.cancel()
-                job = MainScope().launch {
-                    delay(700L)
-                    if (!p0.isNullOrEmpty()) {
-                        query = p0
-                        Log.i("onQueryTextSubmit", p0)
+            binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(queryKeyWord: String?): Boolean {
+                    binding.searchBar.clearFocus()
+                    if (!queryKeyWord.isNullOrEmpty()) {
+                        viewModel.getNews(CATEGORY, q = queryKeyWord)
                     } else {
-                        query = ""
+                        viewModel.getNews(CATEGORY)
                     }
-                    viewModel.getNews("general", query)
+                    return false
                 }
-                return false
-            }
 
-        })
+                override fun onQueryTextChange(queryKeyWord: String?): Boolean {
+                    job?.cancel()
+                    job = MainScope().launch {
+                        delay(700L)
+                        if (!queryKeyWord.isNullOrEmpty()) {
+                            query = queryKeyWord
+                        } else {
+                            query = ""
+                        }
+                        viewModel.getNews(CATEGORY, query)
+                    }
+                    return false
+                }
 
-        /*     binding.searchBar.setOnCloseListener (object : SearchView.OnCloseListener {
-                 override fun onClose(): Boolean {
-                     viewModel.getNews("business")
-                     Log.i("onClose", "search closed")
-                     return false
-                 }
+            })
+        } else {
+            Toast.makeText(requireContext(), "You are offline", Toast.LENGTH_LONG).show()
 
-             })*/
-
-
-        viewModel.newsLiveData.observe(viewLifecycleOwner) {
-            newsAdapter.setArticlesList(it.articles)
+            binding.offlineImage.visibility = View.VISIBLE
         }
         return binding.root
     }
@@ -97,6 +104,45 @@ class GeneralFragment : Fragment(), OnClickListener {
         var intent = Intent(requireContext(), ArticleActivity::class.java)
         intent.putExtra("article", article)
         startActivity(intent)
+    }
+
+
+    companion object {
+        fun isOnline(context: Context): Boolean {
+            val connectivityManager =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            if (connectivityManager != null) {
+                val capabilities =
+                    connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+                if (capabilities != null) {
+                    if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                        return true
+                    } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                        return true
+                    } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                        return true
+                    }
+                }
+            }
+            return false
+        }
+    }
+
+    private fun fetchNews(query:String) {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val language:String = sharedPreferences.getString("language", "us")!!
+        val sortBy:String = sharedPreferences.getString("sortBy", "popularity")!!
+        Log.i("GeneralFragment", language)
+        Log.i("GeneralFragment", sortBy)
+        if (isOnline(requireContext())) {
+            binding.refreshLayout.isRefreshing = true
+            viewModel.getNews(q = query, category = CATEGORY, language = language, sortBy = sortBy)
+            viewModel.newsLiveData.observe(viewLifecycleOwner) {
+                binding.refreshLayout.isRefreshing = false
+                if (it.articles.isNotEmpty()) {newsAdapter.setArticlesList(it.articles)}
+                else {Toast.makeText(requireContext(), "No Results For This Search", Toast.LENGTH_LONG).show()}
+            }
+        }
     }
 
 }

@@ -1,6 +1,10 @@
 package com.example.newsapp.home.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.newsapp.R
 import com.example.newsapp.databinding.ActivityHomeBinding
@@ -12,7 +16,10 @@ class HomeActivity : AppCompatActivity(){
 
     private val binding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i("HomeActivity", "inside HomeActivity")
+
 
         //binding.tabLayout.setupWithViewPager(binding.viewPager)
 
@@ -58,7 +65,17 @@ class HomeActivity : AppCompatActivity(){
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.settings){
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
+        return true
+    }
 
 
 }

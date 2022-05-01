@@ -35,10 +35,8 @@ class NewsRecyclerAdapter(
         holder.binding.titleTv.text = article.title
         if (!article.author.isNullOrEmpty()) {
             holder.binding.sourceText.text = "By: " + article.author
-            Log.i("NewsRecyclerAdapter", "author " + article.author)
         } else {
             holder.binding.sourceText.text = "By: " + article.source.name
-            Log.i("NewsRecyclerAdapter", "sourse " + article.source.name)
         }
         holder.binding.dateText.text = article.publishedAt.slice(0..9)
         holder.binding.descText.text = article.description
