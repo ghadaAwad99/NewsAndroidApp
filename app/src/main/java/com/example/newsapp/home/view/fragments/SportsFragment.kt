@@ -1,20 +1,22 @@
-package com.example.newsapp.home.view
+package com.example.newsapp.home.view.fragments
 
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
-import com.example.newsapp.databinding.FragmentGeneralBinding
-import com.example.newsapp.databinding.FragmentTechnologyBinding
+import com.example.newsapp.databinding.FragmentSportsBinding
+import com.example.newsapp.home.view.ArticleActivity
+import com.example.newsapp.home.view.NewsRecyclerAdapter
+import com.example.newsapp.home.view.OnClickListener
 import com.example.newsapp.home.viewModel.HomeViewModel
 import com.example.newsapp.home.viewModel.HomeViewModelFactory
 import com.example.newsapp.model.Article
@@ -25,22 +27,21 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class TechnologyFragment : Fragment(), OnClickListener {
 
-    private val binding by lazy { FragmentTechnologyBinding.inflate(layoutInflater) }
+class SportsFragment : Fragment(), OnClickListener {
 
-    var query: String = ""
+    var query:String = ""
 
-    private val CATEGORY = "technology"
+    private val CATEGORY = "sports"
 
-    private val viewModel by lazy {
-        ViewModelProvider(
-            this, factory = HomeViewModelFactory(
-                Repository.getInstance(NewsService.getInstance(), requireContext())
-            )
+    private val binding by lazy { FragmentSportsBinding.inflate(layoutInflater) }
+
+    private val viewModel by lazy { ViewModelProvider(
+        this, factory = HomeViewModelFactory(
+            Repository.getInstance(NewsService.getInstance(), requireContext())
         )
-            .get(HomeViewModel::class.java)
-    }
+    )
+        .get(HomeViewModel::class.java) }
     private val newsAdapter by lazy { NewsRecyclerAdapter(requireContext(), this) }
 
     override fun onResume() {
@@ -141,4 +142,6 @@ class TechnologyFragment : Fragment(), OnClickListener {
             }
         }
     }
+
+
 }

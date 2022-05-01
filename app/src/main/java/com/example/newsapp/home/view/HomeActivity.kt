@@ -8,6 +8,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.newsapp.R
 import com.example.newsapp.databinding.ActivityHomeBinding
+import com.example.newsapp.home.view.fragments.*
+import com.example.newsapp.settings.SettingsActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
 

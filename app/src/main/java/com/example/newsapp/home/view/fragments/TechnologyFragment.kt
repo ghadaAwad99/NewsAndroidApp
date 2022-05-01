@@ -1,11 +1,10 @@
-package com.example.newsapp.home.view
+package com.example.newsapp.home.view.fragments
 
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
-import com.example.newsapp.databinding.FragmentEntertainmentBinding
+import com.example.newsapp.databinding.FragmentTechnologyBinding
+import com.example.newsapp.home.view.ArticleActivity
+import com.example.newsapp.home.view.NewsRecyclerAdapter
+import com.example.newsapp.home.view.OnClickListener
 import com.example.newsapp.home.viewModel.HomeViewModel
 import com.example.newsapp.home.viewModel.HomeViewModelFactory
 import com.example.newsapp.model.Article
@@ -25,12 +27,13 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class EntertainmentFragment : Fragment(), OnClickListener {
+class TechnologyFragment : Fragment(), OnClickListener {
 
-    private val binding by lazy { FragmentEntertainmentBinding.inflate(layoutInflater) }
+    private val binding by lazy { FragmentTechnologyBinding.inflate(layoutInflater) }
 
     var query: String = ""
-    private val CATEGORY = "entertainment"
+
+    private val CATEGORY = "technology"
 
     private val viewModel by lazy {
         ViewModelProvider(

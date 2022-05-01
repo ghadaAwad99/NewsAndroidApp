@@ -1,4 +1,4 @@
-package com.example.newsapp.home.view
+package com.example.newsapp.settings
 
 import android.os.Bundle
 import androidx.preference.DropDownPreference

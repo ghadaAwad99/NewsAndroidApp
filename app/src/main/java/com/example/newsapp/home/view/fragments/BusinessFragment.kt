@@ -1,11 +1,10 @@
-package com.example.newsapp.home.view
+package com.example.newsapp.home.view.fragments
 
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
-import com.example.newsapp.databinding.FragmentGeneralBinding
+import com.example.newsapp.databinding.FragmentBusinessBinding
+import com.example.newsapp.home.view.ArticleActivity
+import com.example.newsapp.home.view.NewsRecyclerAdapter
+import com.example.newsapp.home.view.OnClickListener
 import com.example.newsapp.home.viewModel.HomeViewModel
 import com.example.newsapp.home.viewModel.HomeViewModelFactory
 import com.example.newsapp.model.Article
@@ -26,13 +28,13 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
-class GeneralFragment : Fragment(), OnClickListener {
+class BusinessFragment : Fragment(), OnClickListener {
 
-    private val binding by lazy { FragmentGeneralBinding.inflate(layoutInflater) }
+    var query:String = ""
 
-    private val CATEGORY = "general"
+    private val CATEGORY = "business"
 
-    var query: String = ""
+    private val binding by lazy { FragmentBusinessBinding.inflate(layoutInflater) }
 
     private val viewModel by lazy {
         ViewModelProvider(
@@ -132,8 +134,6 @@ class GeneralFragment : Fragment(), OnClickListener {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val language:String = sharedPreferences.getString("language", "us")!!
         val sortBy:String = sharedPreferences.getString("sortBy", "popularity")!!
-        Log.i("GeneralFragment", language)
-        Log.i("GeneralFragment", sortBy)
         if (isOnline(requireContext())) {
             binding.refreshLayout.isRefreshing = true
             viewModel.getNews(q = query, category = CATEGORY, language = language, sortBy = sortBy)

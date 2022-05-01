@@ -1,4 +1,4 @@
-package com.example.newsapp.home.view
+package com.example.newsapp.home.view.fragments
 
 import android.content.Context
 import android.content.Intent
@@ -13,7 +13,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
-import com.example.newsapp.databinding.FragmentScienceBinding
+import com.example.newsapp.databinding.FragmentHealthBinding
+import com.example.newsapp.home.view.ArticleActivity
+import com.example.newsapp.home.view.NewsRecyclerAdapter
+import com.example.newsapp.home.view.OnClickListener
 import com.example.newsapp.home.viewModel.HomeViewModel
 import com.example.newsapp.home.viewModel.HomeViewModelFactory
 import com.example.newsapp.model.Article
@@ -24,13 +27,13 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class ScienceFragment : Fragment(), OnClickListener {
+class HealthFragment : Fragment(), OnClickListener {
 
-    private val binding by lazy { FragmentScienceBinding.inflate(layoutInflater) }
+    private val binding by lazy { FragmentHealthBinding.inflate(layoutInflater) }
 
     var query: String = ""
 
-    private val CATEGORY = "science"
+    private val CATEGORY = "health"
 
     private val viewModel by lazy {
         ViewModelProvider(
