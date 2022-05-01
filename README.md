@@ -3,7 +3,8 @@ Android application that display news from API allowing the user to view the dif
 
 
 ## News Application Screens
-<img src="https://https://user-images.githubusercontent.com/74993384/166146648-a47f2871-cd5f-446f-8947-376ed0459eb2.png" height="640" width="288">
+
+<img src="https://user-images.githubusercontent.com/74993384/166159647-6c2208bc-79c9-4f56-955b-0b37d28899de.png" height="640" width="288">
 <img src="https://user-images.githubusercontent.com/74993384/166146671-3bb7c2a4-4394-4e3d-bca5-f68de4b6e78b.png" height="640" width="288">
 <img src="https://user-images.githubusercontent.com/74993384/166146679-1f41c7f7-de82-4e5b-a897-80ad5ea880cc.png" height="640" width="288">
 
@@ -31,5 +32,5 @@ Share news in different applications:
 
 Display the details of any chosen article:
 
-<video src='https://user-images.githubusercontent.com/74993384/166159243-ec050cd6-63de-491b-ab3b-34d9d964cec1.mp4' width=180/>
+<video src='https://user-images.githubusercontent.com/74993384/166159623-fd907525-82a4-4d2b-875c-1dad8a842c0d.mp4' width=180/>
 
