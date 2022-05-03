@@ -4,6 +4,7 @@ Android application that display news from API allowing the user to view the dif
 ## Built With
 - MVVM architectural design pattern.
 - Retrofit
+- Glide
 - Coroutines
 - LiveData
 
