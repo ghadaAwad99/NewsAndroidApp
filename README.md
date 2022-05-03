@@ -1,6 +1,11 @@
 # News Android App
 Android application that display news from API allowing the user to view the different categories and open news articles in browser, share article via social media, search in each category, change the settings of the displayed news and filter the search results. News App is built using MVVM design pattern.
 
+## Built With
+- MVVM architectural design pattern.
+- Retrofit
+- Coroutines
+- LiveData
 
 ## News Application Screens
 
