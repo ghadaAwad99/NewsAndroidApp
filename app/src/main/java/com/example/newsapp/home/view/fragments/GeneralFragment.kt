@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,6 +49,7 @@ class GeneralFragment : Fragment(), OnClickListener {
 
     override fun onResume() {
         super.onResume()
+        Log.i("GeneralFragment", "inside onResume")
         fetchNews(query)
     }
 
@@ -56,6 +58,7 @@ class GeneralFragment : Fragment(), OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.i("GeneralFragment","inside GeneralFragment")
 
         binding.newsRecyclerView.adapter = newsAdapter
 
@@ -132,7 +135,7 @@ class GeneralFragment : Fragment(), OnClickListener {
 
     private fun fetchNews(query:String) {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val language:String = sharedPreferences.getString("language", "us")!!
+        val language:String = sharedPreferences.getString("language", "en")!!
         val sortBy:String = sharedPreferences.getString("sortBy", "popularity")!!
         if (isOnline(requireContext())) {
             binding.refreshLayout.isRefreshing = true
@@ -140,7 +143,7 @@ class GeneralFragment : Fragment(), OnClickListener {
             viewModel.newsLiveData.observe(viewLifecycleOwner) {
                 binding.refreshLayout.isRefreshing = false
                 if (it.articles.isNotEmpty()) {newsAdapter.setArticlesList(it.articles)}
-                else {Toast.makeText(requireContext(), "No Results For This Search", Toast.LENGTH_LONG).show()}
+                //else {Toast.makeText(requireContext(), "No Results For This Search", Toast.LENGTH_LONG).show()}
             }
         }
     }

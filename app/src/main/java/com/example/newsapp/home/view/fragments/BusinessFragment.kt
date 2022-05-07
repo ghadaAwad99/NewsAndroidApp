@@ -132,7 +132,7 @@ class BusinessFragment : Fragment(), OnClickListener {
 
     private fun fetchNews(query:String) {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val language:String = sharedPreferences.getString("language", "us")!!
+        val language:String = sharedPreferences.getString("language","en")!!
         val sortBy:String = sharedPreferences.getString("sortBy", "popularity")!!
         if (isOnline(requireContext())) {
             binding.refreshLayout.isRefreshing = true
@@ -140,7 +140,7 @@ class BusinessFragment : Fragment(), OnClickListener {
             viewModel.newsLiveData.observe(viewLifecycleOwner) {
                 binding.refreshLayout.isRefreshing = false
                 if (it.articles.isNotEmpty()) {newsAdapter.setArticlesList(it.articles)}
-                else {Toast.makeText(requireContext(), "No Results For This Search", Toast.LENGTH_LONG).show()}
+                //else {Toast.makeText(requireContext(), "No Results For This Search", Toast.LENGTH_LONG).show()}
             }
         }
     }

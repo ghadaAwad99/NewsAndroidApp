@@ -10,19 +10,18 @@
     <string name="previous">Previous</string>
 
     <string-array name="language_entries">
-        <item>Arabic</item>
-        <item>English</item>
-        <item>German</item>
-        <item>Spanish</item>
-        <item>French</item>
-        <item>Hebrew</item>
-        <item>Italian</item>
-        <item>Dutch</item>
-        <item>Norwegian</item>
-        <item>Portuguese</item>
-        <item>Russian</item>
-        <item>Swedish</item>
-        <item>Chinese</item>
+        <item>Egypt</item>
+        <item>United States</item>
+        <item>Germany</item>
+        <item>Spain</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Netherlands</item>
+        <item>Norway</item>
+        <item>Portugal</item>
+        <item>Russia</item>
+        <item>Sweden</item>
+        <item>China</item>
     </string-array>
     <string-array name="language_values">
         <item>ar</item>
@@ -30,7 +29,6 @@
         <item>de</item>
         <item>es</item>
         <item>fr</item>
-        <item>he</item>
         <item>it</item>
         <item>nl</item>
         <item>no</item>

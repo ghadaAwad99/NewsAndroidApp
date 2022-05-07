@@ -34,9 +34,9 @@ class NewsRecyclerAdapter(
         val article = articlesList[position]
         holder.binding.titleTv.text = article.title
         if (!article.author.isNullOrEmpty()) {
-            holder.binding.sourceText.text = "By: " + article.author
+            holder.binding.sourceText.text =  article.author
         } else {
-            holder.binding.sourceText.text = "By: " + article.source.name
+            holder.binding.sourceText.text =  article.source.name
         }
         holder.binding.dateText.text = article.publishedAt.slice(0..9)
         holder.binding.descText.text = article.description

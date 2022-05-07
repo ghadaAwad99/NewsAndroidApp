@@ -26,13 +26,6 @@ class HomeActivity : AppCompatActivity(){
         //binding.tabLayout.setupWithViewPager(binding.viewPager)
 
 
-       // tabLayout.addTab(tabLayout.newTab().setText("Chats").setIcon(R.drawable.ic_chat_24))
-        //tabLayout.addTab(tabLayout.newTab().setText("Calls").setIcon(R.drawable.ic_call_24))
-
-
-
-
-
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 

@@ -6,34 +6,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".home.view.fragments.GeneralFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-
-    <!-- TODO: Update blank fragment layout -->
     <SearchView
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="14dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="8dp"
         android:background="@drawable/custom_search_background"
         android:queryHint="Search News"
         android:iconifiedByDefault="false"
-        android:queryBackground="@android:color/transparent"
-        />
-
+        android:queryBackground="@android:color/transparent" />
         <ImageView
             android:id="@+id/offline_image"
             android:layout_width="match_parent"
@@ -41,9 +31,7 @@
             android:src="@drawable/error"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_bar"
-            android:visibility="gone"
-            />
-
+            android:visibility="gone" />
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
@@ -56,15 +44,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:layout_editor_absoluteX="10dp"
                 tools:listitem="@layout/news_item"
-                app:layout_constraintTop_toBottomOf="@id/search_bar"
-
-                />
-
-
-
+                app:layout_constraintTop_toBottomOf="@id/search_bar" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </FrameLayout>

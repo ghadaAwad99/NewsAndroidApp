@@ -62,11 +62,12 @@
             <TextView
                 android:id="@+id/desc_text"
                 android:layout_width="match_parent"
-                android:layout_height="33dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="24dp"
                 android:ellipsize="end"
+                android:maxLines="3"
                 android:fontFamily="@font/roboto_medium"
                 app:layout_constraintBottom_toTopOf="@id/share_button"
                 app:layout_constraintEnd_toEndOf="parent"
