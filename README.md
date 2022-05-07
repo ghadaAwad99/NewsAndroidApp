@@ -12,14 +12,17 @@ Android application that display news from API allowing the user to view the dif
 
 <img src="https://user-images.githubusercontent.com/74993384/166159647-6c2208bc-79c9-4f56-955b-0b37d28899de.png" height="640" width="288">
 <img src="https://user-images.githubusercontent.com/74993384/166146671-3bb7c2a4-4394-4e3d-bca5-f68de4b6e78b.png" height="640" width="288">
-<img src="https://user-images.githubusercontent.com/74993384/166146679-1f41c7f7-de82-4e5b-a897-80ad5ea880cc.png" height="640" width="288">
-
-User can choose the language:
-
-<img src="https://user-images.githubusercontent.com/74993384/166146685-297ac8f1-0a92-4b3a-9620-6c5e5f746677.png" height="640" width="288">
+<img src="https://user-images.githubusercontent.com/74993384/167250666-88faaded-b17f-4539-8d00-2514c11299f5.png" height="640" width="288">
 
 
-and display news in the preferred language:
+
+User can choose the country:
+
+
+<img src="https://user-images.githubusercontent.com/74993384/167250690-406beef1-2df0-4b16-9c23-a92f65972da3.png" height="640" width="288">
+
+
+and display news in the preferred country:
 
 
 <img src="https://user-images.githubusercontent.com/74993384/166146729-be9d1950-5d90-4a8e-bbf0-ba5a380ab5fa.png" height="640" width="288">
